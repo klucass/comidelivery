@@ -1,0 +1,71 @@
+<div class="row">
+  <div class="col-md-6">
+
+<%= form_for @item, html: {class: "form-horizontal", role: "form"} do |f|%>
+  <% if @item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= I18n.t('item.new.error_msg') %></h2>
+
+      <ul>
+      <% @item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+
+        <%= f.label :nome, 'Nome', class: "col-sm-4 control-label" %>
+        <div class="col-sm-8">
+          <%= f.text_field :nome, class: 'form-control', placeholder: 'Nome do produto' %>
+        </div>
+
+  </div>
+
+  <div class="form-group">
+
+        <%= f.label :categoria_id, "Categoria", class: "col-sm-4 control-label" %>
+        <div class="col-sm-8">
+          <select class="form-control" name="item[categoria_id]" id="item_categoria_id">
+          <%= options_from_collection_for_select(@categorias, :id, :nome) %>
+        </select>
+
+        </div>
+
+  </div>
+
+  <div class="form-group">
+
+        <%= f.label :descricao, "Descrição", class: "col-sm-4 control-label" %>
+        <div class="col-sm-8">
+          <%= f.text_field :descricao, class: 'form-control', placeholder: 'Descreva o produto, ingredientes, etc.' %>
+        </div>
+
+  </div>
+
+  <div class="form-group">
+
+        <%= f.label :preco_centavos, "Preço (em centavos)", class: "col-sm-4 control-label" %>
+        <div class="col-sm-8">
+          <%= f.number_field :preco_centavos, class: 'form-control', placeholder: 'Preço do produto em centavos. Digite apenas numeros' %>
+
+          <span id="helpBlock" class="help-block">Digite apenas números. Os dois últimos dígitos são os centavos. Por exemplo: R$ 40,75 - digite: 4075</span>
+        </div>
+
+
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-8">
+
+     <%= submit_tag "Salvar produto", class: "btn btn-success btn-lg btn-block" %>
+
+     </div>
+
+  </div>
+<% end %>
+
+</div>
+</div>

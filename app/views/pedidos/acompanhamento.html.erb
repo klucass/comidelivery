@@ -1,0 +1,64 @@
+<% content_for :title do %> Acompanhamento | Comidelivery - Delivery Online<% end %>
+<% flash.each do |name, msg| -%>
+	<%= content_tag :div, msg, class: "alert alert-success" %>
+<% end -%>
+
+<div class="row">
+	<div class="col-md-6">
+<h2>Acompanhe seu pedido</h2>
+<hr>
+
+</div><!-- row -->
+</div><!-- col -->
+
+
+
+	<% @pedidos.each do |pedido| %>
+
+	<div class="row">
+
+	<div class="col-md-6">
+
+
+
+		<div class="panel panel-default">
+
+		  <div class="panel-heading">
+		    <h3 class="panel-title"><strong><%= pedido.restaurante.try(:nome) %> <%= Time.zone.at(pedido.updated_at).strftime("%d/%m/%Y - %H:%M") %> (ID: <%= pedido.id %>)</strong></h3>
+		  </div>
+
+
+		<div class="panel-body">
+
+		  	<strong>Itens:</strong>
+		</div>
+
+
+
+		<!-- List group -->
+		<ul class="list-group">
+
+			<% pedido.item_pedidos.each do |itempedido| %>
+			<li class="list-group-item"><%= itempedido.quantidade%> x <%= itempedido.item.nome %> - <%= currency_symbol %> <%= centavos_em_real(itempedido.item.preco_centavos) %></li>
+			<% end %>
+
+			<li class="list-group-item"><strong>Total: <%= currency_symbol %> <%= centavos_em_real(pedido.preco_total) %></strong></li>
+
+			<li class="list-group-item"><strong>Saiu para entrega?</strong>
+				<% if pedido.status == 4 %>
+				Sim
+				<% else %>
+				Não
+				<% end %>
+			</li>
+
+
+		</ul><!-- list group-->
+
+		</div>
+	</div><!-- col -->
+	</div><!-- pedidos row -->
+
+
+
+		<% end %>

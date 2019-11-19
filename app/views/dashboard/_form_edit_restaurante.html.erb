@@ -1,0 +1,124 @@
+<%= form_for @restaurante, url: {action: "update"}, html: {class: "form-horizontal", role: "form"} do |f|%>
+         <div class="form-group">
+
+            <%= f.label :status, "Status", class: "col-sm-3 control-label" %>
+            <div class="col-sm-9">
+
+               <select class="form-control" name="restaurante[status]" id="restaurante_status">
+
+					<%= options_for_select([['ATIVO', 'ATIVO'], ['INATIVO', 'INATIVO']]) %>
+
+               </select>
+
+
+            </div>
+
+         </div>
+
+         <div class="form-group">
+
+            <%= f.label :metodo_pagamento, "Formas de pagamento", class: "col-sm-3 control-label" %>
+            <div class="col-sm-9">
+
+               <select class="form-control" name="restaurante[metodo_pagamento]" id="restaurante_metodo_pagamento">
+
+					<%= options_for_select([
+                  ['Dinheiro e cartões (créd/deb)', 'Dinheiro e cartões (créd/deb)'],
+                  ['Dinheiro e cartão de débito','Dinheiro e cartão de débito'], ['Dinheiro', 'Dinheiro']]) %>
+
+               </select>
+
+
+            </div>
+
+         </div>
+
+
+			<div class="form-group">
+
+				<%= f.label :imagem, "Imagem do restaurante", class: "col-sm-3 control-label" %>
+				<div class="col-sm-9">
+					<%= f.file_field :imagem, class: 'form-control', placeholder: "Imagem do restaurante" %>
+					<span id="helpBlock" class="help-block">Deve ser quadrada, 200 x 200 pixels</span>
+
+				</div>
+
+			</div>
+
+			<div class="form-group">
+
+				<%= f.label :nome, t('.nome'), class: "col-sm-3 control-label" %>
+				<div class="col-sm-9">
+					<%= f.text_field :nome, class: 'form-control', placeholder: "Nome do restaurante" %>
+				</div>
+
+			</div>
+			<div class="form-group">
+
+				<%= f.label :cozinha_id, "Cozinha", class: "col-sm-3 control-label" %>
+				<div class="col-sm-9">
+					<select class="form-control" name="restaurante[cozinha_id]" id="restaurante_cozinha_id">
+					<%= options_from_collection_for_select(@cozinhas, :id, :nome) %>
+				</select>
+
+				</div>
+
+			</div>
+
+			<div class="form-group">
+
+				<%= f.label :descricao, t('.descricao'), class: "col-sm-3 control-label" %>
+				<div class="col-sm-9">
+					<%= f.text_area :descricao, class: 'form-control', placeholder: "Descrição do restaurante" %>
+					<span id="helpBlock" class="help-block">Descrição completa do restaurante. Essa descrição vai aparecer na listagem de restaurantes e na página individual do restaurante.</span>
+
+				</div>
+
+			</div>
+
+
+
+			<div class="form-group">
+
+				<%= f.label :pedido_minimo_centavos, "Pedido mínimo", class: "col-sm-3 control-label" %>
+				<div class="col-sm-9">
+					<%= f.text_field :pedido_minimo_centavos, class: 'form-control', placeholder: "Digite apenas números, os dois últimos dígitos são centavos." %>
+					<span id="helpBlock" class="help-block">Digite apenas números, os dois últimos dígitos são centavos. Ex: 2075 (R$ 20,75)</span>
+				</div>
+
+			</div>
+
+			<div class="form-group">
+
+				<%= f.label :hora_inicio, "Hora de abertura", :ignore_date => true, class: "col-sm-3 control-label" %>
+				<div class="col-sm-9">
+					<%= f.time_select :hora_inicio, class: 'form-control', placeholder: "Hora de abertura" %>
+					<span id="helpBlock" class="help-block">Hora em que o restaurante abre</span>
+
+				</div>
+
+			</div>
+
+			<div class="form-group">
+
+				<%= f.label :hora_fim, "Hora de fechamento", :ignore_date => true, class: "col-sm-3 control-label" %>
+				<div class="col-sm-9">
+					<%= f.time_select :hora_fim, class: 'form-control', placeholder: "Hora de fechamento" %>
+					<span id="helpBlock" class="help-block">Hora em que o restaurante fecha</span>
+
+				</div>
+
+			</div>
+
+
+			<div class="form-group">
+
+				<div class="col-sm-3"></div>
+				<div class="col-sm-9">
+
+					<%= f.button t('.submit'), class: 'btn btn-primary' %>
+
+			    </div>
+			</div>
+
+		<%end%>

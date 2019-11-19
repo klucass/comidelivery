@@ -1,0 +1,24 @@
+<h2>Seu Pedido</h2>
+
+<%if pedido.item_pedidos.empty? %>
+<p>Seu pedido está vazio.</p>	
+<% else %>
+<%= render(pedido.item_pedidos) %>
+<p></p>
+<%= button_to 'Esvaziar pedido', pedido, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-sm btn-danger'%>
+
+<div class="row"><!-- ********* subtotal ******** -->
+		<div class="col-md-7">
+			<p><strong>Subtotal</strong></p>
+		</div>
+		<div class="col-md-5">
+			<p class="">
+				<strong><%= currency_symbol %> <%= centavos_em_real(pedido.preco_total) %></strong>
+			</p>
+		</div>
+
+	</div><!-- /subtotal -->
+
+	<%= link_to "Finalizar pedido", pedidos_checkout_path, class: "btn btn-lg btn-success btn-block" %>
+
+	<% end %>

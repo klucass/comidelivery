@@ -1,0 +1,84 @@
+<%= form_for @sabor, url: 'new', html: {class: "form-horizontal", role: "form"} do |f|%>
+  <% if @sabor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= I18n.t('item.new.error_msg') %></h2>
+
+      <ul>
+      <% @sabor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+
+        <%= f.label :nome, 'Nome', class: "col-md-12" %>
+        
+        <div class="col-md-4">
+          <%= f.text_field :nome, class: 'form-control', placeholder: 'Exemplo: Calabresa' %>
+        </div>
+        
+  </div>
+
+  <div class="form-group">
+
+        <%= f.label :descricao, 'Descrição', class: "col-md-12" %>
+        
+        <div class="col-md-4">
+          <%= f.text_area :descricao, class: 'form-control', placeholder: 'Descreva os ingredientes' %>
+        </div>
+        
+  </div>
+
+  <div class="form-group">
+
+        <%= f.label :precoP, 'Preço P', class: "col-md-12" %>
+        <span id="helpBlock" class="col-md-12 help-block">Preço em centavos. Não use vírgula. Os dois últimos dígitos são os centavos. Exemplo: para R$ 10,50 - Digite 1050</span>
+        
+        <div class="col-md-4">
+          <%= f.number_field :precoP, class: 'form-control', placeholder: 'Digite apenas números sem vírgula, os dois últimos digitos são os centavos' %>
+        </div>
+        
+  </div>
+  <div class="form-group">
+
+        <%= f.label :precoM, 'Preço M', class: "col-md-12" %>
+        
+        
+        <div class="col-md-4">
+          <%= f.number_field :precoM, class: 'form-control', placeholder: 'Digite apenas números sem vírgula, os dois últimos digitos são os centavos' %>
+        </div>
+        
+  </div>
+  <div class="form-group">
+
+        <%= f.label :precoG, 'Preço G', class: "col-md-12" %>
+        
+        
+        <div class="col-md-4">
+          <%= f.number_field :precoG, class: 'form-control', placeholder: 'Digite apenas números sem vírgula, os dois últimos digitos são os centavos' %>
+        </div>
+        
+  </div>
+  <div class="form-group">
+
+        <%= f.label :precoGG, 'Preço GG', class: "col-md-12" %>
+        
+        <div class="col-md-4">
+          <%= f.number_field :precoGG, class: 'form-control', placeholder: 'Digite apenas números sem vírgula, os dois últimos digitos são os centavos' %>
+        </div>
+        
+  </div>
+  
+  
+  <div class="form-group">
+    
+    <div class="col-sm-8">
+
+     <%= submit_tag "Salvar sabor", class: "btn btn-success btn-lg btn-block" %>
+
+     </div>
+
+  </div>
+<% end %>

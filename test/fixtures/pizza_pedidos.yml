@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pedidos_id: 
+  tamanho: MyString
+  bordas_id: 
+
+two:
+  pedidos_id: 
+  tamanho: MyString
+  bordas_id: 

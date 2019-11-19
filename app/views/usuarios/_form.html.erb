@@ -1,0 +1,80 @@
+<div class="row">
+  <div class="col-md-6">
+
+<%= form_for @usuario, html: {class: "form-horizontal", role: "form"} do |f|%>
+  <% if @usuario.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= I18n.t('usuarios.new.error_msg') %></h2>
+
+      <ul>
+      <% @usuario.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+
+        <%= f.label :nome, I18n.t('.usuarios.form.nome'), class: "col-sm-4 control-label" %>
+        <div class="col-sm-8">
+          <%= f.text_field :nome, class: 'form-control', placeholder: 'Digite aqui seu nome' %>
+        </div>
+        
+  </div>
+
+  <div class="form-group">
+
+        <%= f.label :sobrenome, I18n.t('.usuarios.form.sobrenome'), class: "col-sm-4 control-label" %>
+        <div class="col-sm-8">
+          <%= f.text_field :sobrenome, class: 'form-control', placeholder: 'Digite aqui seu sobrenome' %>
+        </div>
+        
+  </div>
+
+  <div class="form-group">
+
+        <%= f.label :email, I18n.t('.usuarios.form.email'), class: "col-sm-4 control-label" %>
+        <div class="col-sm-8">
+          <%= f.email_field :email, class: 'form-control', placeholder: 'Digite aqui seu email' %>
+        </div>
+        
+  </div>
+  <div class="form-group">
+
+        <%= f.label :telefone, I18n.t('.usuarios.form.telefone'), class: "col-sm-4 control-label" %>
+        <div class="col-sm-8">
+          <%= f.text_field :telefone, class: 'form-control', placeholder: 'Formato: (XX) XXXX-XXXX' %>
+        </div>
+        
+  </div>
+  <div class="form-group">
+
+        <%= f.label :password, I18n.t('.usuarios.form.password'), class: "col-sm-4 control-label" %>
+        <div class="col-sm-8">
+          <%= f.password_field :password, class: 'form-control', placeholder: 'Digite sua senha' %>
+        </div>
+        
+  </div>
+
+  <div class="form-group">
+
+        <%= f.label :password_confirmation, I18n.t('.usuarios.form.password_confirmation'), class: "col-sm-4 control-label" %>
+        <div class="col-sm-8">
+          <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Repita sua senha' %>
+        </div>
+        
+  </div>
+  <div class="form-group">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-8">
+
+     <%= submit_tag I18n.t(".usuarios.form.submit"), class: "btn btn-success btn-lg btn-block" %>
+
+     </div>
+
+  </div>
+<% end %>
+
+</div>
+</div>

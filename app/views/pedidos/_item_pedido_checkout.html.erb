@@ -1,0 +1,3 @@
+<li><%= item_pedido.quantidade %> x <%= item_pedido.item.nome %> - <%= centavos_em_real(item_pedido.preco_total) %>
+	<%= button_to 'Remover', item_pedido, method: :delete, class: "btn btn-danger btn-xs" %>
+</li>

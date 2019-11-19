@@ -1,0 +1,84 @@
+<% content_for :title do %> Dashboard <% end %>
+<div class="row">
+   <% flash.each do |name, msg| -%>
+   	<%= content_tag :div, msg, class: "alert alert-success" %>
+   <% end -%>
+
+	<%= render 'menu' %>
+
+	<div class="col-md-9">
+		<h3>Lista de restaurantes</h3>
+		<p> Agora: <%= date_to_time(Time.now) %></p>
+
+		<table class="table table-striped dsb-restaurantes">
+			<tr>
+				<th>Nome</th>
+				<th>ID</th>
+				<th>Pedidos</th>
+				<th>Produtos</th>
+			   <th>Status</th>
+			   <th>Ticket Medio</th>
+			   <th>Acessos</th>
+
+			</tr>
+
+			<% @restaurantes.each do |restaurante| %>
+
+			<tr>
+				<td>
+					<a href="/restaurantes/<%=restaurante.id%>"><%= restaurante.nome %></a>
+
+               <small>(<a href="/dashboard/edit/<%=restaurante.id%>">Editar</a>)</small>
+				</td>
+				<td>
+					<%= restaurante.id %>
+				</td>
+				<td>
+					<%= restaurante.pedidos.count %>
+				</td>
+				<td>
+					<%= restaurante.itens.count %>
+				</td>
+				<td><%= restaurante.try(:status) %></td>
+				<td>
+					-
+				</td>
+				<td>
+					-
+				</td>
+			</tr>
+
+			<% end %>
+		</table>
+
+		<h3>Lista de usuários</h3>
+
+		<table class="table table-striped dsb-restaurantes">
+			<tr>
+				<th>Nome</th>
+				<th>Email</th>
+				<th>Telefone</th>
+
+
+			</tr>
+
+			<% @usuarios.each do |usuario| %>
+
+			<tr>
+				<td>
+					<%= usuario.nome %>
+				</td>
+				<td>
+					<%= usuario.email %>
+				</td>
+				<td>
+					<%= usuario.telefone %>
+				</td>
+
+			</tr>
+
+			<% end %>
+		</table>
+	</div>
+
+</div>

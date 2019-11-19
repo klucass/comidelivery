@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+<h2>Dados pessoais</h2>
+<p>
+  <strong>Nome:</strong>
+  <%= @usuario.nome %>
+</p>
+
+<p>
+  <strong>Sobrenome:</strong>
+  <%= @usuario.sobrenome %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @usuario.email %>
+</p>
+<p>
+  <strong>Telefone:</strong>
+  <%= @usuario.telefone %>
+</p>
+
+<h2>Endereço</h2>
+
+  <% @usuario.enderecos.each do |endereco| %>
+  <p><strong>Nome:</strong> <%= endereco.nome %></p>
+  <p><strong>Cidade:</strong><%= endereco.cidade %></p>
+  <p><strong>Estado:</strong><%= endereco.estado %></p>
+  <p><strong>Logradouro:</strong><%= endereco.logradouro %></p>
+  <p><strong>Endereço:</strong><%= endereco.endereco %></p>
+  <p><strong>Número:</strong><%= endereco.numero %></p>
+  <p><strong>Cep:</strong><%= endereco.cep %></p>
+  <p><strong>Ponto de referência  :</strong><%= endereco.ponto_referencia %></p>
+
+  <% end %>
+
+
+<%= link_to 'Edit', edit_usuario_path(@usuario) %> |
+

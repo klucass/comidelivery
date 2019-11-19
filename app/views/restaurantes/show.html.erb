@@ -1,0 +1,165 @@
+<% content_for :title do %> <%= @restaurante.nome %> | Comidelivery - Delivery Online | Faça seu pedido <% end %>
+<% flash.each do |name, msg| -%>
+	<%= content_tag :div, msg, class: "alert alert-success" %>
+<% end -%>
+
+<div class="row">
+	<div class="col-md-9"><!-- Cardápio -->
+
+		<div class="cabecalho"><!-- cabecalho -->
+			<img class="show-restaurante-img"src="<%= @restaurante.imagem.url %>" alt="<%= @restaurante.nome %>">
+			<h1><%= @restaurante.nome %><small>(<%= @restaurante.cozinha.nome %>)</small></h1>
+			<div class="panel panel-default">
+			  <div class="panel-body">
+             <small></small>
+			    <p class="restaurante-descricao"><%= @restaurante.descricao %></p>
+			  </div>
+			  <div class="panel-footer detalhes-do-restaurante">
+             <small>
+
+			  	<span class="restaurante-hora-abre"><strong>Funcionamento: </strong><%= date_to_time(@restaurante.try(:hora_inicio)) %> até <%= date_to_time(@restaurante.try(:hora_fim))%></span>
+
+            <span><strong>Pedido mínimo: </strong>R$ <%= centavos_em_real(@restaurante.pedido_minimo_centavos) %></span>
+
+
+            <span class="restaurante-metodo-pagamento"><strong>Pagamento: </strong><%= @restaurante.try(:metodo_pagamento) %></span>
+
+         </small>
+
+
+			  </div>
+			</div>
+
+		</div><!-- /cabecalho -->
+
+
+
+
+
+
+<h2>Cardápio</h2>
+
+
+<div class="row"> <!-- lista de produtos -->
+	<div class="col-md-12">
+
+
+<% # inicio categoria. Solução que carece elegância para exibir titulo somente da categoria que existir no cardápio %>
+
+<% @categorias.each do |categoria| %>
+
+<% tem_categoria = false%>
+
+<% @cardapio.each do |i| %>
+	<% if (i.categoria == categoria) then tem_categoria = true %>
+	<% end %>
+<% end %>
+
+
+	<% if tem_categoria %>
+		<h3 class="categoria-heading"><%= categoria.nome %></h3>
+	<% end %>
+<% #end %>
+
+<% @cardapio.each do |item| %>
+
+<% if item.categoria == categoria %>
+
+
+
+<table class="table table-cardapio">
+
+
+	<tr>
+
+		<td class="td-nome">
+			<p><strong><%= item.nome %></strong><p>
+			<p><%= item.descricao %></p>
+		</td>
+
+		<td class="td-preco"><strong><%= currency_symbol %> <%= centavos_em_real(item.preco_centavos) %></strong></td>
+
+
+
+		<td class="td-adicionar">
+         <% if (@restaurante.status == 'ATIVO') then #exibe o pedido somente se o usuário estiver ativo %>
+
+			<% unless @pedido.nil? then %>
+
+				<% unless @pedido_iniciado_neste_restaurante then %>
+
+				<%= button_to 'Adicionar ao Pedido', item_pedidos_path(item_id: item),disabled: "disabled" ,class: "btn btn-primary", remote: true  %>
+
+				<% else %>
+
+				<%= button_to 'Adicionar ao Pedido', item_pedidos_path(item_id: item), class: "btn btn-primary", remote: true  %>
+
+				<% end %>
+
+			<% else %>
+
+				<%= button_to 'Adicionar ao Pedido', item_pedidos_path(item_id: item), class: "btn btn-primary", remote: true  %>
+
+			<% end %>
+
+         <% end #fim condicional de STATUS%>
+
+
+
+
+		</td>
+
+	</tr>
+
+
+
+
+</table>
+<% end #loop produtos %>
+
+<% end #if %>
+
+<% end # loop categorias%>
+
+<% # fim categoria %>
+
+</div><!-- col lista de produtos -->
+</div><!-- fim lista de produtos-->
+
+</div><!-- col-md-9 cardapio -->
+
+<% if (@restaurante.status == 'ATIVO') then #exibe o pedido somente se o usuário estiver ativo %>
+
+<div class="col-md-3 pedido-sidebar" id="pedido">
+
+	<% unless @pedido.nil? %>
+
+		<% unless @pedido_iniciado_neste_restaurante then %>
+
+		<h2>Seu pedido</h2>
+		<p class="bg-warning text-warning">Atenção, você começou um pedido em outro restaurante. Finalize o pedido antes de fazer outro ou clique no botão abaixo para esvaziar seu pedido e continuar em outro restaurante.</p>
+
+		<%= button_to 'Esvaziar pedido', @pedido, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-sm btn-danger'%>
+
+		<% else %>
+
+			<%= render @pedido %>
+
+		<% end %>
+
+	<% else %>
+
+	<h2>Seu pedido</h2>
+
+	<p>Seu pedido está vazio</p>
+
+	<% end %>
+
+
+</div> <!-- Pedido sidebar -->
+
+<% end #fim da condicional de STATUS do restaurante%>
+
+
+
+</div><!-- row -->

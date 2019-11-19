@@ -1,0 +1,97 @@
+/*@import url(http://fonts.googleapis.com/css?family=Montserrat);*/
+@import url(//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+.navbar {border-radius: 0;}
+.header-wrapper .navbar{border-top: 2px solid #D93600}
+.navbar-header a.navbar-brand {color: #D93600; font-family: 'Open Sans', sans-serif;}
+a.img-navbar-brand{
+	background: url(../images/logo-comidelivery.png) no-repeat;
+	text-indent: -9999px;
+	width: 280px;
+	height: 26px;
+	margin-top: 10px
+}
+.background {position: absolute;left: 0px;top: 0px;right: 0px;bottom: 0px;z-index: -100;background: none no-repeat scroll 50% 50% / cover transparent;background-image: url("../images/home-back.jpg")}
+.home-text {color:#FFF; font-family: 'Montserrat', sans-serif; text-align: center;text-shadow: 2px 2px 1px #222;}
+.home-passos{color: #fff; text-shadow: 2px 1px 1px #111; margin-top: 20px}
+.home-passos p {margin:20px 0; text-align: center;}
+.home-btn-pedido a:link, .home-btn-pedido a:visited{border: 1px solid #294; -moz-box-shadow: 0px 4px #294;-webkit-box-shadow: 0px 4px #294;box-shadow: 0px 4px #294; color: #FFF;}
+.home-cozinhas {margin-top:40px; margin-bottom: 30px; color: #fff; background-color:rgba(0,0,0,0.5); padding: 20px;border-radius: 20px; border: 1px solid #000}
+.social-icons-home a {margin: 20px}
+.social-icons-home {margin-top: 40px}
+.footer-nav {margin-bottom: 0}
+@media (min-width: 992px) {/* Medium devices (desktops, 992px and up) */
+	.home-passos{margin-top: 5%; margin-bottom:5%; }
+	.home-text{margin-top:10%;font-size: 56px;}
+	.home-btn-pedido a{margin-top: 20px; height: 70px; line-height: 45px; font-size: 32px}
+	.home-cozinhas {margin-top:80px; margin-bottom: 60px}
+
+	.pedido-sidebar {border: 1px solid #EEE;}
+
+} /* http://stackoverflow.com/a/17863685 */
+@-moz-document url-prefix() {
+  fieldset { display: table-cell; }
+}
+.restaurante-descricao {font-size: 18px; color: #777;}
+.detalhes-do-restaurante span { margin: 0 20px 0 0;color:#555;}
+
+.table-cardapio td { line-height: 100%;}
+.table-cardapio .th-adicionar, .table-cardapio .td-adicionar {text-align: right;}
+.table-cardapio .th-nome, .table-cardapio .td-nome {width: 70%}
+.categoria-heading {text-transform: uppercase; font-size: 14px; color: #555;}
+
+.painel-menu ul li {border:1px solid #ccc;}
+.painel-menu ul li a:hover {color: #222};
+.painel-menu {margin: 20px 0}
+.painel-content .encerrar-button {margin-bottom: 20px}
+
+table.pedidos {margin-top: 20px}
+
+.restaurante-list-item a:hover {color: #222;}
+
+.pedido-sidebar {padding-bottom: 20px}
+.pedido-sidebar p {padding: 10px;}
+
+.lista-restaurantes-item {padding-top: 10px}
+.lista-restaurantes-item h4 {color: #D41}
+.lista-restaurantes-item .descricao {height: 70px}
+/* página de restaurante */
+.show-restaurante-img { border: 1px solid #ddd; padding: 5px; height: 180px ; width: 180px;}
+.cabecalho h1, .painel-head h2 {display: inline-block; vertical-align: bottom; margin-left: 10px}
+.cabecalho .panel, .painel-head .panel {margin-top: 10px}
+.restaurante-cozinha {color: #777;}
+.lista-restaurantes-item .cozinha {color: #777;}
+
+.cadastro-restaurante-background {position: absolute;left: 0px;top: 0px;right: 0px;bottom: 0px;z-index: -1;background: none no-repeat scroll 50% 50% / cover transparent;background-image: url("../images/cadastro-restaurante-back.jpg")}
+.cadastro-restaurante-page {color:#fff;text-shadow: 2px 1px 1px #111;}
+.cadastro-restaurante-page h1 {font-size: 48px;}
+.cadastro-restaurante-page .intro {background-color:rgba(0,0,0,0.5); padding: 40px;border-radius: 20px; border: 1px solid #000; margin:30px 0 50px;}
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 50px;
+}
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 50px;
+  background-color: #f5f5f5;
+  border: none;
+}
+#footer nav {border: none}
+
+/* Modal na home */
+
+.home-modal .modal-content {padding: 20px; border: 2px solid rgb(217, 54, 0)}
+.home-modal .modal-content h3 {color: rgb(217, 54, 0); margin: 25px 0}
+
+/* Gerais */
+
+html body a:link, a:visited {color: rgb(217, 54, 0)}

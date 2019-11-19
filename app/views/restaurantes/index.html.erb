@@ -1,0 +1,36 @@
+<% content_for :title do %> Restaurantes | Comidelivery - Delivery Online | Faça seu pedido <% end %>
+<% flash.each do |name, msg| -%>
+	<%= content_tag :div, msg, class: "alert alert-success" %>
+<% end -%>
+
+<h1>Restaurantes</h1>	
+
+<div class="row">
+	<div class="col-md-8">
+
+		
+
+		<% @restaurantes.each do |restaurante|  %>
+
+		
+		<div class="col-sm-6 col-md-4">
+		    <div class="thumbnail lista-restaurantes-item">
+		      <img src="<%= restaurante.imagem.url %>" alt="<%= restaurante.nome %>">
+		      <div class="caption">
+		        <h4><%= restaurante.nome %></h4>
+		        <p class="cozinha">Cozinha: <%= restaurante.cozinha.nome %></p>
+		        <p class="descricao"><%= truncate(restaurante.descricao, length: 70) %></p>
+		        <p><a href="/restaurantes/<%= restaurante.id %>-<%= restaurante.nome.parameterize%>" class="btn btn-primary btn-block" role="button">Ver cardápio</a>
+		      </div>
+		    </div>
+  		</div>
+
+		<% end %>
+
+		
+
+	</div>
+
+</div>
+
+

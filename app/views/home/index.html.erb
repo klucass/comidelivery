@@ -1,0 +1,92 @@
+<% content_for :title do %> <%= t "title.home" %> <% end %>
+
+		<% content_for :home_background do %>
+  			<div class="background"><!-- --></div>
+		<% end %>
+
+			<div class="row">
+				<div class="col-md-offset-2 col-md-8">
+					<h1 class="home-text">Pedir comida agora é tão fácil quanto um click.</h1>
+
+				</div>
+			</div>
+
+			<div class="modal fade modal home-modal col-sm-12 col-md-12" tabindex="-1" role="dialog" aria-labelledby="Procurar restaurante">
+  				<div class="modal-dialog modal-bg">
+    				<div class="modal-content">
+
+							<h3 class="text-center">Encontre um restaurante perto de você</h3>
+
+							<p>
+								<form class="form-inline" action="/busca_restaurantes">
+								  <div class="form-group">
+								    <label for="exampleInputName2">Digite seu CEP</label>
+								    <input type="text" class="form-control" id="exampleInputName2" placeholder="Apenas números: xxxxxxxx">
+										</div>
+
+								  <button type="submit" class="btn btn-success">Procurar restaurantes</button>
+								</form>
+
+							</p>
+							<p class="text-center">	<small>	Não sabe seu CEP? <a href="http://www.buscacep.correios.com.br/sistemas/buscacep/" target="_blank">Pesquise aqui.</a></small></p>
+
+			    	</div>
+			  	</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-offset-4 col-md-4 home-btn-pedido">
+					<a href="#" data-target=".modal" data-toggle="modal" class="btn btn-lg btn-success btn-block">Escolher restaurante</a>
+				</div>
+
+			</div>
+
+			<div class="row">
+				<div class="col-md-offset-2 col-md-8 home-passos">
+
+				<div class="col-md-4">
+
+					<%= image_tag "1passo.png", class: "center-block" %>
+					<p><strong>Passo 1:</strong> Escolha um restaurante</p>
+
+				</div>
+				<div class="col-md-4">
+					<%= image_tag "2passo.png", class: "center-block" %>
+					<p><strong>Passo 2:</strong> Faça seu pedido</p>
+				</div>
+				<div class="col-md-4">
+					<%= image_tag "3passo.png", class: "center-block" %>
+					<p><strong>Passo 3:</strong> Acompanhe seu pedido</p>
+				</div>
+
+				</div>
+
+			</div>
+
+
+
+			<div class="row">
+				<div class="col-md-12">
+						<div class="col-md-offset-2 col-md-8 home-cozinhas">
+							<h2 class="text-center"><strong>Como funciona?</strong></h2>
+							<p class="list-inline text-center">
+								Basta escolher um restaurante e fazer seu pedido. Você acompanha quando ele sair para entrega. Não poderia ser mais fácil.</p>
+
+								<p class="text-center"><strong>Donos de restaurante</strong></p>
+
+								<p class="list-inline text-center"> Você é dono de restaurante?
+
+								 <span class="label label-success"><a href="/cadastro_restaurante" style="color:#fff"> Cadastre-o</a></span> hoje mesmo para começar a vender online.
+							</p>
+
+							<p class="text-center"><strong>Acompanhe novidades e promoções</strong></p>
+							<p class="text-center social-icons-home">
+								<a href="https://www.facebook.com/pages/Comidelivery/963538083694429"><%= image_tag "facebook-icon.png", class: "list-inline" %></a>
+								<a href="http://instagram.com/comidelivery"><%= image_tag "instagram-icon.png", class: "list-inline" %></a>
+								<a href="http://twitter.com/comideli"><%= image_tag "twitter-icon.png", class: "list-inline" %></a>
+
+							</p>
+
+						</div>
+				</div>
+			</div>

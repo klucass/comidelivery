@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: MyString
+  descricao: MyString
+  precoP: 1
+  precoM: 1
+  precoG: 1
+  precoGG: 1
+  belongsTo: MyString
+  restaurante: MyString
+
+two:
+  nome: MyString
+  descricao: MyString
+  precoP: 1
+  precoM: 1
+  precoG: 1
+  precoGG: 1
+  belongsTo: MyString
+  restaurante: MyString

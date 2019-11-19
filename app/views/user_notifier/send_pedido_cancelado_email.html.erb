@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p><strong><%= @pedido.usuario.nome %>, seu pedido foi cancelado pelo restaurante.</strong></p>
+
+    <p>Se você acha que isto pode ter sido um engano, entre em contato com o restaurante responsável.</p>
+
+    <p>Nome do restaurante: <%= @pedido.restaurante.nome %></p>
+    <p>Telefone de contato: <%= @pedido.restaurante.usuario.telefone %></p>
+
+    <p>Não responda este email. Saiba como entrar em contato conosco em comidelivery.com/contato</p>
+
+    <p>Até breve!</p>
+
+  </body>
+</html>

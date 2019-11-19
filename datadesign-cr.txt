@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- SQL XML created by WWW SQL Designer, https://github.com/ondras/wwwsqldesigner/ -->
+<!-- Active URL: http://localhost/wwwsqldesigner/ -->
+<sql>
+<datatypes db="mysql">
+	<group label="Numeric" color="rgb(238,238,170)">
+	 	<type label="TINYINT" length="0" sql="TINYINT" quote=""/>
+	 	<type label="SMALLINT" length="0" sql="SMALLINT" quote=""/>
+	 	<type label="MEDIUMINT" length="0" sql="MEDIUMINT" quote=""/>
+	 	<type label="INT" length="0" sql="INT" quote=""/>
+		<type label="Integer" length="0" sql="INTEGER" quote=""/>
+		<type label="BIGINT" length="0" sql="BIGINT" quote=""/>
+		<type label="Decimal" length="1" sql="DECIMAL" re="DEC" quote=""/>
+		<type label="Single precision" length="0" sql="FLOAT" quote=""/>
+		<type label="Double precision" length="0" sql="DOUBLE" re="DOUBLE" quote=""/>
+	</group>
+
+	<group label="Character" color="rgb(255,200,200)">
+		<type label="Char" length="1" sql="CHAR" quote="'"/>
+		<type label="Varchar" length="1" sql="VARCHAR" quote="'"/>
+		<type label="Text" length="0" sql="MEDIUMTEXT" re="TEXT" quote="'"/>
+		<type label="Binary" length="1" sql="BINARY" quote="'"/>
+		<type label="Varbinary" length="1" sql="VARBINARY" quote="'"/>
+		<type label="BLOB" length="0" sql="BLOB" re="BLOB" quote="'"/>
+	</group>
+
+	<group label="Date &amp; Time" color="rgb(200,255,200)">
+		<type label="Date" length="0" sql="DATE" quote="'"/>
+		<type label="Time" length="0" sql="TIME" quote="'"/>
+		<type label="Datetime" length="0" sql="DATETIME" quote="'"/>
+		<type label="Year" length="0" sql="YEAR" quote=""/>
+		<type label="Timestamp" length="0" sql="TIMESTAMP" quote="'"/>
+	</group>
+	
+	<group label="Miscellaneous" color="rgb(200,200,255)">
+		<type label="ENUM" length="1" sql="ENUM" quote=""/>
+		<type label="SET" length="1" sql="SET" quote=""/>
+		<type label="Bit" length="0" sql="bit" quote=""/>
+	</group>
+</datatypes><table x="638" y="129" name="restaurantes">
+<row name="id" null="1" autoincrement="1">
+<datatype>INT</datatype>
+<default>NULL</default></row>
+<row name="nome" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="descricao" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="usuario_id" null="1" autoincrement="0">
+<datatype>INT</datatype>
+<default>NULL</default><relation table="usuarios" row="id" />
+</row>
+<row name="cozinha_id" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default><relation table="cozinhas" row="id" />
+</row>
+<row name="img_url" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<key type="INDEX" name="">
+<part>usuario_id</part>
+</key>
+</table>
+<table x="249" y="126" name="pedidos">
+<row name="id" null="1" autoincrement="1">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="id_usuario" null="1" autoincrement="0">
+<datatype>INT</datatype>
+<default>NULL</default><relation table="usuarios" row="id" />
+</row>
+<row name="id_restaurante" null="1" autoincrement="0">
+<datatype>INT</datatype>
+<default>NULL</default><relation table="restaurantes" row="id" />
+</row>
+<row name="id_endereco" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default><relation table="enderecos" row="id" />
+</row>
+<row name="status" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="id_forma_de_pagamento" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default><relation table="formas_de_pagamento" row="id" />
+</row>
+<row name="comentario" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<key type="INDEX" name="usuario">
+<part>id_usuario</part>
+</key>
+<key type="INDEX" name="restaurante">
+<part>id_restaurante</part>
+</key>
+</table>
+<table x="43" y="125" name="usuarios">
+<row name="id" null="1" autoincrement="1">
+<datatype>INT</datatype>
+<default>NULL</default></row>
+<row name="nome" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="sobrenome" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="email" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>'NULL'</default></row>
+<row name="password_digest" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="telefone" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="confirmation_token" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="confirmed_at" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<key type="UNIQUE" name="email">
+<part>email</part>
+<part>id</part>
+</key>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="40" y="369" name="enderecos">
+<row name="id" null="1" autoincrement="1">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="nome" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="estado" null="1" autoincrement="0">
+<datatype>CHAR(2)</datatype>
+<default>NULL</default></row>
+<row name="cidade" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="endereco" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="numero" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="cep" null="1" autoincrement="0">
+<datatype>INT</datatype>
+<default>NULL</default></row>
+<row name="id_usuario" null="1" autoincrement="0">
+<datatype>INT</datatype>
+<default>NULL</default><relation table="usuarios" row="id" />
+</row>
+<row name="id_restaurantes" null="1" autoincrement="0">
+<datatype>INT</datatype>
+<default>NULL</default><relation table="restaurantes" row="id" />
+</row>
+<row name="ponto_referencia" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="id">
+<part>id</part>
+</key>
+<key type="INDEX" name="">
+<part>cep</part>
+</key>
+</table>
+<table x="477" y="125" name="itens">
+<row name="id" null="1" autoincrement="1">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="nome" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="descricao" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="preco" null="1" autoincrement="0">
+<datatype>INT</datatype>
+<default>NULL</default></row>
+<row name="url_thumb_img" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="url_full_img" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="id_restaurante" null="1" autoincrement="0">
+<datatype>INT</datatype>
+<default>NULL</default><relation table="restaurantes" row="id" />
+</row>
+<row name="id_categorias" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default><relation table="categorias" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="246" y="342" name="itens_pedido">
+<row name="id" null="1" autoincrement="1">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="id_item" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default><relation table="itens" row="id" />
+</row>
+<row name="id_pedido" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default><relation table="pedidos" row="id" />
+</row>
+<row name="qtde" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="id_itens_pizzas" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default><relation table="itens_pizzas" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="813" y="230" name="formas_de_pagamento">
+<row name="id" null="1" autoincrement="1">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="nome" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="descricao" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="806" y="131" name="restaurante_forma_de_pagamento">
+<row name="id_restaurantes" null="1" autoincrement="0">
+<datatype>INT</datatype>
+<default>NULL</default><relation table="restaurantes" row="id" />
+</row>
+<row name="id_formas_de_pagamento" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default><relation table="formas_de_pagamento" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id_restaurantes</part>
+<part>id_formas_de_pagamento</part>
+</key>
+</table>
+<table x="477" y="365" name="categorias">
+<row name="id" null="1" autoincrement="1">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="nome" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="descricao" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="674" y="306" name="cozinhas">
+<row name="id" null="1" autoincrement="1">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="nome" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="descricao" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="692" y="413" name="cupons">
+<row name="id" null="1" autoincrement="1">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="identificador" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="tipo" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="valor" null="1" autoincrement="0">
+<datatype>INT</datatype>
+<default>NULL</default></row>
+<row name="id_restaurante" null="1" autoincrement="0">
+<datatype>INT</datatype>
+<default>NULL</default><relation table="restaurantes" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="327" y="528" name="pizzas">
+<row name="id" null="1" autoincrement="1">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="481" y="527" name="itens_pizzas">
+<row name="id" null="1" autoincrement="1">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="id_pizzas" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default><relation table="pizzas" row="id" />
+</row>
+<row name="id_itens" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default><relation table="itens" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="832" y="336" name="sabores_de_pizza">
+<row name="id" null="1" autoincrement="1">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="nome" null="0" autoincrement="0">
+<datatype>VARCHAR(250)</datatype>
+<default>'NULL'</default></row>
+<row name="descricao" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="preco_p" null="1" autoincrement="0">
+<datatype>INT</datatype>
+<default>NULL</default></row>
+<row name="preco_m" null="1" autoincrement="0">
+<datatype>INT</datatype>
+<default>NULL</default></row>
+<row name="preco_g" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="preco_gg" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="id_restaurantes" null="1" autoincrement="0">
+<datatype>INT</datatype>
+<default>NULL</default><relation table="restaurantes" row="id" />
+</row>
+<row name="new field" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="834" y="571" name="borda">
+<row name="id" null="1" autoincrement="1">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="nome" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="descricao" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="preco" null="1" autoincrement="0">
+<datatype>INT</datatype>
+<default>NULL</default></row>
+<row name="id_restaurantes" null="1" autoincrement="0">
+<datatype>INT</datatype>
+<default>NULL</default><relation table="restaurantes" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="1043" y="336" name="pizza_restaurante">
+<row name="id" null="1" autoincrement="1">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="tamanho" null="1" autoincrement="0">
+<datatype>CHAR</datatype>
+<default>NULL</default></row>
+<row name="qtde_sabores" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="id_restaurantes" null="1" autoincrement="0">
+<datatype>INT</datatype>
+<default>NULL</default><relation table="restaurantes" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+</sql>
+

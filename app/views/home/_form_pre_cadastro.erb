@@ -1,0 +1,25 @@
+<%= form_for @precadastro, url: {action: "precadastro"}, html: {class: "form-horizontal", role: "form"} do |f| %>
+
+	<div class="form-group">
+		<label for="nome">Nome do Restaurante</label>
+		<%= f.text_field :nome, class: 'form-control', placeholder: 'Nome' %>
+	</div>
+
+	<div class="form-group">
+		<label for="nome">Telefone de contato com DDD</label>
+
+		<%= f.text_field :telefone, class: 'form-control', placeholder: 'DDD + número' %>
+
+	</div>
+
+	<div class="form-group">
+		<label for="email">Email</label>
+
+		<%= f.email_field :email, class: 'form-control', placeholder: 'exemplo@email.com' %>
+
+
+	</div>
+
+	<%= f.submit "Enviar", class: 'btn btn-lg btn-success btn-block' %>
+
+<% end %>

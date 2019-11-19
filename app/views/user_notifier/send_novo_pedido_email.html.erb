@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h2 style="color:#d93600;">Seu restaurante recebeu um novo pedido</h2>
+    <p>Confira os detalhes abaixo. </p>
+
+    <p>
+      Para entrar no site, siga o endereço: <a href="http://comidelivery.com/entrar">comidelivery.com/entrar</a>
+    </p>
+
+    <h3>Detalhes do pedido</h3>
+
+
+    <div class="row">
+    	<div class="col-md-10">
+
+
+    <ul class="list-group">
+    	<li class="list-group-item"><strong>Identificador: </strong> <%= @pedido.id %></li>
+    	<li class="list-group-item"><strong>Hora: </strong> <%= @pedido.updated_at %></li>
+    	<li class="list-group-item"><strong>Valor: </strong> R$ <%= centavos_em_real(@pedido.preco_total) %></li>
+    	<li class="list-group-item"><strong>Itens: </strong>
+    		<ul class="list-group">
+    		<% @pedido.item_pedidos.each do |itemp| %>
+    		<li class="list-group-item"><%= itemp.quantidade%> x <%= itemp.item.nome %></li>
+    		<% end %>
+
+    		</ul>
+
+    	</li>
+    	<li class="list-group-item"> <strong>Comentário: </strong>"<%= @pedido.try(:comentario) %>"</li>
+    	<li class="list-group-item"><strong>Cliente: </strong><%= @pedido.usuario.nome %> <%= @pedido.usuario.sobrenome %> </li>
+    	<li class="list-group-item"><strong> Telefone: </strong><%= @pedido.usuario.telefone %></li>
+    	<li class="list-group-item"><strong>Endereço de entrega: </strong>
+    		<ul class="list-group">
+    		<li class="list-group-item"><strong>Logradouro: </strong><%= @pedido.endereco.logradouro %></li>
+    		<li class="list-group-item"><strong>Endereço: </strong><%= @pedido.endereco.endereco %></li>
+    		<li class="list-group-item"><strong>Numero: </strong><%= @pedido.endereco.numero %></li>
+    		<li class="list-group-item"><strong>Ponto de referência: </strong><%= @pedido.endereco.ponto_referencia %></li>
+    		<li class="list-group-item"><strong>CEP: </strong><%= @pedido.endereco.cep %></li>
+    		<li class="list-group-item"><strong>Cidade: </strong><%= @pedido.endereco.cidade %> / <%= @pedido.endereco.estado %></li>
+    	</li>
+    </ul>
+
+    </table>
+
+    </div>
+    </div>
+
+<p>
+   <strong><a href="http://comidelivery.com/painel/pedidos/">Atender Pedido</a></strong>
+</p>
+  </body>
+</html>

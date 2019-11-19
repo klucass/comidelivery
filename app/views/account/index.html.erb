@@ -1,0 +1,136 @@
+<% content_for :title do %> Minha conta | Comidelivery - Delivery Online | Faça seu pedido <% end %>
+<% flash.each do |name, msg| -%>
+	<%= content_tag :div, msg, class: "alert alert-success" %>
+<% end -%>
+<div class="row">
+	<div class="col-md-12">
+
+		<h2>Minha conta</h2>
+
+		<hr/>
+
+	</div>
+
+
+	
+
+</div>
+<div class="row">
+  	<div class="col-md-6">
+
+  		<div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title"><strong>Dados Pessoais</strong></h3>
+		  </div>
+		  <div class="panel-body">
+		    <p><strong>Nome:</strong> <%= @usuario.nome %></p>
+	  		<p><strong>Sobrenome:</strong> <%= @usuario.sobrenome %></p>
+	  		<p><strong>E-mail:</strong> <%= @usuario.email %></p>
+	  		<p><strong>Telefone: </strong><%= @usuario.telefone %></p>
+		  </div>
+		</div>
+
+  		
+  		
+  		
+
+  	</div>
+</div>
+<div class="row">
+
+	<div class="col-md-12">
+  		<h3>Endereço(s)</h3>
+
+  		<%= link_to 'Novo Endereço', new_endereco_path, class: "btn btn-success" %>
+
+
+  	</div>
+
+</div>
+
+  	<div class="row">
+
+		<% @usuario.enderecos.try(:each) do |endereco| %>
+		
+
+		<div class="col-md-3">
+
+		<div class="panel panel-default">
+
+			<div class="panel-heading"><h4><strong><%= endereco.nome %></strong> </h4></div>
+  			<div class="panel-body">
+    		<p><strong>Cidade:</strong><%= endereco.cidade %></p>
+			<p><strong>Estado:</strong><%= endereco.estado %></p>
+			<p><strong>Logradouro:</strong><%= endereco.logradouro %></p>
+			<p><strong>Endereço:</strong><%= endereco.endereco %></p>
+			<p><strong>Número:</strong><%= endereco.numero %></p>
+			<p><strong>Cep:</strong><%= endereco.cep %></p>
+			<p><strong>Ponto de referência  :</strong><%= endereco.ponto_referencia %></p>
+  			</div>
+  			<div class="panel-footer">Editar</div>
+
+		</div>
+
+		
+		
+
+		</div>
+
+		<% end %>
+
+	</div>
+
+		
+
+<div class="row">
+
+	<div class="col-md-3">
+		<h3>Meus pedidos</h3>
+
+		<% unless @usuario.pedidos.nil? %>
+
+		<% @usuario.pedidos.try(:each) do |pedido| %>
+
+
+
+		<div class="panel panel-default">
+
+		  <div class="panel-heading">
+		    <h3 class="panel-title"><strong>ID: <%= pedido.id%></strong></h3>
+		  </div>
+
+
+		<div class="panel-body">
+
+		  	<p><strong>Restaurante:</strong> <%= pedido.restaurante.try(:nome) %></p>
+		</div>
+		    
+		    
+
+		<!-- List group -->
+		<ul class="list-group">
+
+			<% pedido.item_pedidos.each do |itempedido| %>
+			<li class="list-group-item"><%= itempedido.try(:quantidade)%> x <%= itempedido.item.try(:nome) %> - <%= currency_symbol %> <%= centavos_em_real(itempedido.item.try(:preco_centavos)) %></li>
+			<% end %>
+
+			<li class="list-group-item"><strong>Total: <%= currency_symbol %> <%= centavos_em_real(pedido.try(:preco_total)) %></strong></li>
+
+
+		</ul><!-- list group-->
+
+		    
+		    
+		    
+		  
+		</div>
+
+		
+		
+		<% end %>
+		<% else %>
+		<p>Você não fez nenhum pedido ainda.</p>
+		<% end %>
+	</div>
+
+</div>

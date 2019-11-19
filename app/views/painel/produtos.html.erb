@@ -1,0 +1,45 @@
+<%= render 'head' %>
+
+<h2>Produtos</h2>
+
+<%= link_to 'Cadastrar produto', new_item_path, class: "btn btn-success" %>
+<p></p>
+
+<% if not @produtos %>
+<p>Nenhum produto ainda.</p>
+<% end %>
+
+<table class="table table-striped">
+
+<tr>
+	<th>Categoria</th>
+    <th>Nome</th>
+    <th>Descrição</th>
+    <th>Preço</th>
+    <th>Editar</th>
+    <th>Excluir</th>
+</tr>
+
+<% @produtos.each do |produto| %>
+
+<tr>
+	<td><%= produto.categoria.nome %></td>
+
+	<td><%= produto.nome %></td>
+	
+	<td><%= produto.descricao %></td>
+
+	<td>R$ <%= centavos_em_real(produto.preco_centavos) %></td>
+
+	<td><%= link_to 'Editar', edit_item_path(produto), class: "btn btn-default btn-xs" %></td>
+
+	<td><%= button_to 'Excluir', produto, method: :delete, class: 'btn btn-default btn-xs' %></td>
+
+
+</tr>
+
+<% end %>
+
+</table>
+
+<%= render 'footer' %>

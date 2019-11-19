@@ -1,0 +1,21 @@
+<% if (@pedido.status < 4) then #exibe o botao de notificacao de entrega somente e se somente o status for menor que 4. Status 4 = pedido saiu para entrega. Status 5 = pedido encerrado sem entrega ao cliente %>
+<div class="col-md-12"><p>Clique abaixo para notificar o usuário de que seu pedido saiu para entrega.</p></div>
+
+
+<div class="col-md-12 encerrar-button">
+   <%= button_to painel_pedidos_path, params: { pedido_id: @pedido.id }, class: "btn btn-success" do %>
+   <span class="glyphicon glyphicon-ok-sign"></span> Notificar saida para entrega
+   <% end %>
+
+</div><!-- COL MD 12 -->
+
+<div class="col-md-12"><p>Clique abaixo para cancelar o pedido SEM ENTREGA ao cliente. O cliente será notificado por email. Mesmo assim, <strong>é altamente recomendável que o cliente seja contatado antes dessa ação.</strong></p></div>
+
+<div class="col-md-12 encerrar-button">
+   <%= button_to painel_cancelar_pedido_path, params: { pedido_id: @pedido.id }, class: "btn btn-danger btn-xs" do %>
+   <span class="glyphicon glyphicon-ok-sign"></span> Cancelar pedido
+   <% end %>
+
+</div><!-- COL MD 12 -->
+
+<% end %>

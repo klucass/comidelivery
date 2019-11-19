@@ -1,0 +1,13 @@
+<% content_for :title do %> Novo produto | Comidelivery <% end %>
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+
+<% flash.each do |name, msg| -%>
+	<%= content_tag :div, msg, class: "alert alert-success" %>
+<% end -%>
+<div class="page-header">
+	<h1>Editar produto</h1>
+</div>
+
+<%= render 'form' %>

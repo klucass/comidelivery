@@ -1,0 +1,19 @@
+<% content_for :title do %> Dashboard <% end %>
+<div class="row">
+
+	<%= render 'menu' %>
+
+	<div class="col-md-9">
+		<h3>Lista de restaurantes em pré cadastro</h3>
+      <p>Formato: (Nome | E-mail | Telefone)</p>
+      <% @precadastrados.each do |pre| %>
+
+
+		<li><%= pre.nome %> | <%= pre.email %> | <%= pre.telefone %> | <%= if (pre.created_at) then time_ago_in_words(pre.created_at) end %> atrás</li>
+
+      <% end %>
+
+
+	</div>
+
+</div>

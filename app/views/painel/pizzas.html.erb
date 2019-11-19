@@ -1,0 +1,54 @@
+<%= render 'head' %>
+
+<h2>Sabores de pizza</h2>
+
+<%= link_to 'Cadastrar sabor de pizza', 'pizzas/new', class: "btn btn-success" %>
+<p></p>
+
+<% if not @sabores %>
+<p>Nenhuma pizza ainda.</p>
+<% end %>
+
+<table class="table table-striped">
+
+<tr>
+	<th>Nome</th>
+    <th>Descrição</th>
+    <th>Preço P</th>
+    <th>Preço M</th>
+    <th>Preço G</th>
+    <th>Preço GG</th>
+    <th>Editar</th>
+    <th>Excluir</th>
+</tr>
+
+<% @sabores.each do |p| %>
+
+<tr>
+	<td><%= p.nome %></td>
+
+	<td><%= p.descricao %></td>
+
+	<td>R$ <%= centavos_em_real(p.precoP) %></td>
+
+	<td>R$ <%= centavos_em_real(p.precoM) %></td>
+
+	<td>R$ <%= centavos_em_real(p.precoG) %></td>
+
+	<td>R$ <%= centavos_em_real(p.precoGG) %></td>
+
+	<td><%= link_to 'Editar', "edit_sabor/#{p.id}", class: "btn btn-default btn-xs" %></td>
+
+	<td><%= button_to "Excluir", { action: "destroy_sabor", id: p.id },
+                                method: :post, data: { confirm: "Confirma exclusão da pizza?" },class: "btn btn-default btn-xs" %></td>
+
+	
+
+
+</tr>
+
+<% end %>
+
+</table>
+
+<%= render 'footer' %>

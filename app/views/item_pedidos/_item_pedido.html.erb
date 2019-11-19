@@ -1,0 +1,8 @@
+<% if item_pedido == @current_item %>
+<li id="current_item" class="list-group-item">
+<% else %>
+<li class="list-group-item">
+<% end %>
+	<%= item_pedido.quantidade %> x <%= item_pedido.item.nome %> - <%= centavos_em_real(item_pedido.preco_total) %>
+	<%= button_to 'Remover', item_pedido, method: :delete, class: 'btn btn-xs btn-default' %>
+</li>

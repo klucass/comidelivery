@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= t 'confirm_email.title', nome: @usuario.nome %></h1>
+    
+    <p><%= t('confirm_email.body') %></p>
+
+    <p><%= t 'confirm_email.confirm_link_html', link: link_to(@confirmation_link, @confirmation_link) %></p>
+
+    <p><%= t('confirm_email.contato') %></p>
+  </body>
+</html>

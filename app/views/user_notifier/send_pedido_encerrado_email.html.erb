@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h2 style="color:#d93600;">Seu pedido foi recebido com sucesso pelo restaurante</h2>
+    <p><span style="text-transform: capitalize;"><%= @pedido.usuario.nome %></span>, em breve seu pedido será entregue.</p>
+
+    <p>Caso você ainda não tenha recebido ligação de confirmação, entre em contato diretamente com o restaurante:</p>
+
+    <p>Nome do restaurante: <%= @pedido.restaurante.nome %></p>
+    <p>Telefone de contato: <%= @pedido.restaurante.usuario.telefone %></p>
+
+
+    <p>Não responda este email. Saiba como entrar em contato conosco em comidelivery.com/contato</p>
+
+    <p>Até breve!</p>
+  </body>
+</html>

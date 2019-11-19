@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tamanho: MyString
+  qtde_sabores: 1
+  id_restaurante_id: 
+  : 
+
+two:
+  tamanho: MyString
+  qtde_sabores: 1
+  id_restaurante_id: 
+  : 

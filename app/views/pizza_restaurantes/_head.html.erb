@@ -1,0 +1,27 @@
+<% content_for :title do %> Painel Administrativo | <%= @restaurante.nome %> | Comidelivery.com <% end %>
+
+<% flash.each do |name, msg| -%>
+	<%= content_tag :div, msg, class: "alert alert-success" %>
+<% end -%>
+
+<div class="row">
+	<div class="col-md-12 painel-head"><!-- Painel -->
+
+		<img class="show-restaurante-img" src="<%= @restaurante.imagem.url %>">
+
+		<h2><%= @restaurante.nome%> <small> | <span class="glyphicon glyphicon-dashboard"></span> Painel de Administrativo</small></h2>
+		<div class="panel panel-default">
+			<div class="panel-body">
+			Página do restaurante: <a href="/restaurantes/<%= @restaurante.id %>-<%= @restaurante.nome.parameterize%>">www.comidelivery.com/restaurantes/<%= @restaurante.id %>-<%= @restaurante.nome.parameterize%></a>
+			</div>
+		</div>
+
+
+
+	</div> <!-- Painel -->
+</div><!-- / row titulo -->
+<div class="row">
+
+	<%= render 'menu' %>
+
+	<div class="col-md-9 painel-content"><!-- Conteudo-->

@@ -1,0 +1,26 @@
+<%= render "layouts/head" %>
+<% if user_signed_in? %>
+	<% if current_user.restaurante %>
+	<%= render "layouts/restaurante_main_menu" %>
+	<% else %>
+	<%= render "layouts/user_main_menu" %>
+	<% end %>
+	
+<% else %>
+	<%= render "layouts/main_menu" %>
+<% end %>
+
+	<div class="content-wrapper">
+		<%= yield :home_background %>
+		<div class="container content-container">
+			<% flash.each do |name, msg| -%>
+      			<div class="alert success"> <%= @msg %> </div>
+    		<% end -%>
+
+		<%= yield %>
+
+		</div><!-- /Container (content)-->
+	
+	</div><!-- /Content Wrapper-->
+
+<%= render "layouts/footer" %>

@@ -1,0 +1,74 @@
+pt-BR:
+   restaurantes:
+      new:
+         title: "Novo Restaurante"
+      form:
+         submit: "Salvar informações"
+   usuarios:
+      new:
+         title: "Cadastre-se"
+         error_msg: "Oops, alguns erros precisam ser corrigidos:"
+      form:
+         title: "Novo usuário"
+         nome: "Nome"
+         sobrenome: "Sobrenome"
+         email: "Email"
+         telefone: "Telefone"
+         password: "Senha"
+         password_confirmation: "Confirmação de senha"
+         submit: "Cadastrar"
+         error_msg: "Oops, alguns erros precisam ser corrigidos:"
+      create:
+         success: "Obrigado por se cadastrar! Entre com seu login e senha."
+
+   activerecord:
+      models:
+         usuario: Usuário
+      attributes:
+         usuario:
+            nome: 'Nome'
+            email: 'Email'
+            sobrenome: 'Sobrenome'
+            password: 'Senha'
+            password_confirmation: 'Confirme sua senha'
+      errors:
+         models:
+            usuario:
+               attributes:
+                  password_confirmation:
+                     confirmation: 'A confirmação de senha não confere'
+   confirm_email:
+      subject: 'Comidelivery - Confirme seu email'
+      title: '%{nome}, por favor, confirme seu endereço de email'
+      body: 'Obrigado por se cadastrar no Comidelivery.'
+      confirm_link_html: 'Para você começar a usar o site, acesse o link: %{link}'
+      contato: 'Não responda este email. Para contato, estamos à sua disposição pelo endereço contato@comidelivery.com'
+   confirmation:
+      success: 'Seu endereço de email foi confirmado com sucesso.'
+   title:
+      home: 'Bem-vindo ao Comidelivery - Faça seu pedido'
+   flash:
+      alert:
+         needs_login: "Você precisa estar logado para concluir essa ação."
+      notice:
+         signed_in: "Login realizado com sucesso!"
+         signed_out: 'Logout realizado com sucesso. Até logo!'
+         restaurante_created: "Restaurante criado com sucesso."
+   form:
+      login:
+
+   user_sessions:
+      new:
+         title: "Entrar"
+         email: "Email"
+         password: "Senha"
+         submit: "Entrar"
+         no_account: "Ainda não é cadastrado?"
+         sign_up: "Criar uma conta"
+   activemodel:
+      errors:
+         models:
+            user_session:
+               attributes:
+                  base:
+                     invalid_login: "Oops! A combinação email/senha não funcionou."
