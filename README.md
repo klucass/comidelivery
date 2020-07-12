@@ -7,4 +7,4 @@ Embora esteja com muitas 'gems' desatualizadas, decidi colocar aqui mais como sh
 
 Este projeto foi desenvolvido usando Ruby and Rails, com banco de dados PostgreSQL na plataforma Heroku.
 
-Você pode ver uma versão a última versão em produção em comidelivery.herokuapp.com
+Você pode ver uma versão em produção em comidelivery.herokuapp.com
